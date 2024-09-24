@@ -1,0 +1,76 @@
+[project]
+authors = [{name = "Alim Abrekov", email = "alimabrekov@outlook.com"}]
+dependencies = [
+  "alembic>=1.13.1",
+  "sqlalchemy>=2.0.29",
+  "psycopg>=3.1.18",
+  "psycopg-binary>=3.1.18",
+  "pydantic>=2.6.4",
+  "fastapi>=0.110.1",
+  "dishka>=1.0.0",
+  "uvicorn>=0.29.0",
+  "gunicorn>=21.2.0",
+]
+description = "Python backend application template following Uncle Bob's Clean Architecture principles."
+name = "python-template"
+requires-python = ">=3.11.0"
+version = "0.0.1"
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.4.4",
+  "mypy>=1.9.0",
+  "pytest>=8.1.1",
+  "pytest-asyncio>=0.23.6",
+  "httpx>=0.27.0",
+  "pre-commit>=3.7.1",
+]
+
+[tool.pytest.init_options]
+filterwarnings = [
+  "ignore::DeprecationWarning",
+]
+pythonpath = [
+  "src",
+]
+testpaths = [
+  "tests",
+]
+
+[tool.ruff]
+line-length = 79
+target-version="py311"
+src = ["src"]
+include = ["src/**.py", "tests/**.py"]
+
+[tool.ruff.lint]
+ignore = [
+   "ARG",
+   "ANN",
+   "D",
+   "EM101",
+   "EM102",
+   "PT001",
+   "PT023",
+   "SIM108",
+   "SIM114",
+   "TRY003",
+   "PLW2901",
+   "RET505",
+   "PLR0913",
+   "UP038",
+   "TCH001",
+   "SLF001",
+   "COM812",
+   "ISC001",
+   "S101",
+]
+select = [
+  "ALL",
+]
+
+[tool.ruff.lint.isort]
+no-lines-before = ["local-folder"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "parents"
